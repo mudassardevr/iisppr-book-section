@@ -5,7 +5,7 @@ import Page from "./Page";
 function FlipBook() {
   return (
     <>
-      <h1 className="text-center text-2xl font-bold text-white"> Book Section</h1>
+      <h1 className="font-serif text-center text-2xl font-bold bg-linear-to-r from-cyan-400 via-teal-300 to-lime-300 bg-clip-text text-transparent "> Book Section</h1>
 
       <div className="min-h-screen flex items-center justify-center p-10">
         <HTMLFlipBook
@@ -17,8 +17,8 @@ function FlipBook() {
           mobileScrollSupport={true}
           className=""
         >
-          {/* COVER */}
-          <div className="w-full h-full bg-linear-to-br from-indigo-600 to-purple-700 rounded-2xl grid place-content-center place-items-center p-10">
+          {/* COVER || from-indigo-600 to-purple-700 */}
+          <div className="w-full h-full bg-slate-900 rounded-2xl grid place-content-center place-items-center p-10">
             <img
               className="w-45 object-contain"
               src="/issppr-logo.png"
