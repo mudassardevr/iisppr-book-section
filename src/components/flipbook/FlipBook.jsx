@@ -1,51 +1,124 @@
 import HTMLFlipBook from "react-pageflip";
-import { pages } from "./Data";
-import Page from "./Page";
+
 
 function FlipBook() {
+
+  const pokemonData = [
+    {
+      id: "006",
+      name: "Charizard",
+      types: ["Fire", "Flying"],
+      description:
+        "Flies in search of strong opponents. Breathes extremely hot fire that melts anything, but never uses it on weaker foes.",
+    },
+    {
+      id: "025",
+      name: "Pikachu",
+      types: ["Electric"],
+      description:
+        "When Pikachu meet, they touch tails to exchange electricity as a greeting.",
+    },
+    {
+      id: "125",
+      name: "Electabuzz",
+      types: ["Electric"],
+      description:
+        "Often kept at power plants to regulate electricity. Competes with others to attract lightning during storms.",
+    },
+    {
+      id: "185",
+      name: "Sudowoodo",
+      types: ["Rock"],
+      description:
+        "Despite looking like a tree, its body is more like rock. Hates water and hides when it rains.",
+    },
+    {
+      id: "448",
+      name: "Lucario",
+      types: ["Fighting", "Steel"],
+      description:
+        "Can read thoughts and movements by sensing others' aura. No foe can hide from Lucario.",
+    },
+    {
+      id: "658",
+      name: "Greninja",
+      types: ["Water", "Dark"],
+      description:
+        "Creates throwing stars from compressed water that can slice through metal when thrown at high speed.",
+    },
+    {
+      id: "491",
+      name: "Darkrai",
+      types: ["Dark"],
+      description:
+        "A legendary Pokémon that appears on moonless nights, putting people to sleep and giving them nightmares.",
+    },
+  ];
+
   return (
     <>
-      <h1 className="font-serif text-center text-2xl font-bold bg-linear-to-r from-cyan-400 via-teal-300 to-lime-300 bg-clip-text text-transparent "> Book Section</h1>
 
-      <div className="min-h-screen flex items-center justify-center p-10">
-        <HTMLFlipBook
-          width={400}
-          height={550}
-          maxShadowOpacity={0.5}
-          showCover={true}
-          flippingTime={700}
-          mobileScrollSupport={true}
-          className=""
-        >
-          {/* COVER || from-indigo-600 to-purple-700 */}
-          <div className="w-full h-full bg-slate-900 rounded-2xl grid place-content-center place-items-center p-10">
+     <HTMLFlipBook
+        width={300}
+        height={500}
+        maxShadowOpacity={0.5}
+        drawShadow={true}
+        showCover={true}
+        size="fixed"
+      >
+        {/* COVER */}
+        <div className="page" style={{ background: "transparent" }}>
+          <div className="page-content cover">
             <img
-              className="w-45 object-contain"
               src="/issppr-logo.png"
               alt="issppr logo"
+              className="pokemon-logo"
             />
-            <h2 className="text-center text-white text-4xl">IISPPR</h2>
-            <p className="text-white mt-2">Click to Turn the Page</p>
           </div>
+        </div>
 
-          {/* DYNAMIC PAGES */}
-          {pages.map((page) => {
-            return (
-              <Page
-                key={page.id}
-                title={page.title}
-                image={page.image}
-                desc={page.desc}
-              />
-            );
-          })}
-
-          {/* BACK COVER */}
-          <div className="bg-slate-900 text-white text-3xl rounded-2xl grid place-content-center place-items-center">
-            <p className="text-center">End</p>
+        {pokemonData.map((pokemon) => (
+          <div className="page" key={pokemon.id}>
+            <div className="page-content">
+              <div className="pokemon-container">
+                <img
+                  src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${pokemon.id}.png`}
+                  alt={pokemon.name}
+                />
+                <div className="pokemon-info">
+                  <h2 className="pokemon-name">{pokemon.name}</h2>
+                  <p className="pokemon-number">#{pokemon.id}</p>
+                  <div>
+                    {pokemon.types.map((type) => (
+                      <span
+                        key={type}
+                        className={`pokemon-type type-${type.toLowerCase()}`}
+                      >
+                        {type}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="pokemon-description">{pokemon.description}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </HTMLFlipBook>
-      </div>
+        ))}
+
+
+         {/* BACK */}
+        <div className="page" style={{ background: "transparent" }}>
+          <div className="page-content cover">
+            <img
+              src="/issppr-logo.png"
+              alt="issppr logo"
+              className="pokemon-logo"
+            />
+          </div>
+        </div>
+      </HTMLFlipBook>
+     
+    
     </>
   );
 }
