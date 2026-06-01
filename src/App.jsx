@@ -4,11 +4,9 @@ import FlipBook from "./components/flipbook/FlipBook";
 function App() {
   return (
     <>
-     <div className='container'>
-
-    <FlipBook/>
-     </div>
-     
+      <div className="container animate-fade-up">
+        <FlipBook />
+      </div>
     </>
   );
 }
